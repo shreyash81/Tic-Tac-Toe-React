@@ -35,7 +35,7 @@ const Quote = () => {
           <p>{data.advice}</p>
         </div>
         <span>
-          <img src="/src/assets/icons/quote_icon.svg" alt="Error"></img>
+          <img src="/assets/icons/quote_icon.svg" alt="Error"></img>
         </span>
       </div>
     </div>
