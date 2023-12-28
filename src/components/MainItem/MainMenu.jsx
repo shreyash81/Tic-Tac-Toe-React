@@ -4,7 +4,7 @@ import styles from "./MainMenu.module.css";
 
 const MainMenu = () => {
   const copyLink = () => {
-    navigator.clipboard.writeText("https://tictactoe-frontend.netlify.app/");
+    navigator.clipboard.writeText("https://tictactoe-reactgame.vercel.app/");
     toast.success('Invite Link Copied', {
       style: {
         height:'2.5rem',
