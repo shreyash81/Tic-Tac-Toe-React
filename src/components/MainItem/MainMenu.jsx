@@ -1,6 +1,7 @@
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import styles from "./MainMenu.module.css";
+
 const MainMenu = () => {
   const copyLink = () => {
     navigator.clipboard.writeText("https://tictactoe-frontend.netlify.app/");
@@ -23,18 +24,18 @@ const MainMenu = () => {
     <div className={styles.container}>
       <Toaster position="top-right" reverseOrder={false} />
       <div className={styles.icons}>
-        <img src="/src/assets/icons/cross.svg" alt="X" />
+        <img src="/assets/icons/cross.svg" alt="X" />
         &nbsp;
-        <img src="/src/assets/icons/zero.svg" alt="0" />
+        <img src="/assets/icons/zero.svg" alt="0" />
       </div>
       <div className={styles.play_card}>
         <h2>Pick Player</h2>
         <div className={styles.play_card_buttons}>
           <button className={styles.button} id={styles.cross}>
-            <img src="/src/assets/icons/cross.svg" alt="X" />
+            <img src="/assets/icons/cross.svg" alt="X" />
           </button>
           <button className={styles.button} id={styles.zero}>
-            <img src="/src/assets/icons/zero.svg" alt="0" />
+            <img src="/assets/icons/zero.svg" alt="0" />
           </button>
         </div>
       </div>
