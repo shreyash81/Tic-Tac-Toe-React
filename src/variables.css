@@ -1,9 +1,11 @@
 :root {
     --color-accent: #192A32;
     --color-accent-2: #F2B237;
-    --color-accent-3: #A8BEC9;;
+    --color-accent-3: #A8BEC9;
+    --color-accent-4: #1F3540;
+    --color-accent-5: #192A32;
     --text-color: #31C4BE;
-
+    
 
     --font-large-l: 6rem;
     --font-large: 4rem;
@@ -21,7 +23,7 @@
     --margin-large: 4rem;
     --margin-medium-lm: 3rem;
     --margin-medium-large: 2.7rem;
-    --margin-medium: 2rem;
+    --margin-medium: 2.4rem;
     --margin-medium-sm: 1.5rem;
     --margin-medium-s: 1.25rem;
     --margin-small: 1rem;

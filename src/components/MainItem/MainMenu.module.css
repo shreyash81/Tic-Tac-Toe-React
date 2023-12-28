@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 25rem;
+  width: 20rem;
+  outline: none;
+  text-transform: uppercase;
+}
+.container .icons {
+  margin-bottom: var(--margin-small-s);
+}
+.play_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 9.5rem;
+  width: 19rem;
+  background: #1f3540;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.25rem #000000;
+}
+.play_card h2 {
+  color: #fff;
+}
+
+.play_card_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--color-accent-5);
+  outline: none;
+  border-radius: 0.3rem;
+  box-shadow: 0 0.25rem 0.25rem #000000;
+  height: 2.8rem;
+  width: 17rem;
+}
+
+.container #cross,
+.container #zero {
+  outline: none;
+  border: none;
+  background: none;
+}
+.container .new_game_cpu,
+.container .new_game_human {
+  margin-top: var(--margin-medium-sm);
+  height: 2.5rem;
+  width: 92.7%;
+  text-align: center;
+  background: var(--color-accent-2);
+  outline: none;
+  border: none;
+  border-radius: 0.33rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.container .new_game_human {
+  background: var(--text-color);
+}
+.container .new_game_human span {
+  text-transform: uppercase;
+}
+
+.container .invite_btn {
+  margin-top: var(--margin-medium);
+  height: 2rem;
+  width: 14rem;
+  text-align: center;
+  background: var(--color-accent-2);
+  outline: none;
+  border: none;
+  border-radius: 0.33rem;
+  font-weight: 600;
+}
