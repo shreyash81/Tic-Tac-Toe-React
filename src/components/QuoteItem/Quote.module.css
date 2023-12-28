@@ -1,29 +1,29 @@
 .container {
- height: 15rem;
- width: 16rem;
- background: var(--color-accent);
- outline: none;
- border-radius: 1.2rem;
- text-align: center;
- padding: 2rem;;
- /* overflow: scroll; */
+  height: 15rem;
+  width: 16rem;
+  background: var(--color-accent);
+  outline: none;
+  border-radius: 1.2rem;
+  text-align: center;
+  padding: 2rem;
+  /* overflow: scroll; */
 }
 
 .container h2 {
-    color: var(--text-color);
-    word-wrap: break-word;
+  color: var(--text-color);
+  word-wrap: break-word;
 }
 
 .container p {
   color: var(--color-accent-2);
-  font-size: var(--font-small)
+  font-size: var(--font-small);
 }
 .container span {
-    background:var(--text-color);
-    padding: 0.6rem var(--margin-small);
-    border-radius: 50%;
-    display: inline-block;
-    margin-top: var(--margin-small-s);
+  background: var(--text-color);
+  padding: 0.6rem var(--margin-small);
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: var(--margin-small-s);
 }
 
 .container .advice {
@@ -33,6 +33,5 @@
   word-wrap: break-word;
   white-space: -moz-pre-wrap;
   white-space: pre-wrap;
-word-break: break-word;
+  word-break: break-word;
 }
-

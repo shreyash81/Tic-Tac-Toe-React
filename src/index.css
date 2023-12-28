@@ -1,7 +1,7 @@
-@import 'variables.css';
+@import "variables.css";
 
 :root {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 }

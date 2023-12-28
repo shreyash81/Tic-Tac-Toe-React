@@ -5,18 +5,18 @@ import styles from "./MainMenu.module.css";
 const MainMenu = () => {
   const copyLink = () => {
     navigator.clipboard.writeText("https://tictactoe-reactgame.vercel.app/");
-    toast.success('Invite Link Copied', {
+    toast.success("Invite Link Copied", {
       style: {
-        height:'2.5rem',
-        width:'13rem',
-        border:'none',
-        padding: '0.5rem',
-        color: 'var(--color-accent-2)',
-        background: 'var(--color-accent)',
+        height: "2.5rem",
+        width: "13rem",
+        border: "none",
+        padding: "0.5rem",
+        color: "var(--color-accent-2)",
+        background: "var(--color-accent)",
       },
       iconTheme: {
-        primary: '#713200',
-        secondary: '#FFFAEE',
+        primary: "#713200",
+        secondary: "#FFFAEE",
       },
     });
   };
