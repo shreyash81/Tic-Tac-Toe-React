@@ -8,7 +8,7 @@ const Game = ({ player }) => {
   let changeTurn = useRef(null);
   const buttons = useRef(null);
   const refreshBtn = useRef(null);
-  const gameArr = [
+  let gameArr = [
     "empty",
     "empty",
     "empty",
@@ -21,30 +21,30 @@ const Game = ({ player }) => {
   ];
   const userWinLogic = () => {
     if (
-      (gameArr[0] === "cross" &&
-        gameArr[1] === "cross" &&
-        gameArr[2] === "cross") ||
-      (gameArr[3] === "cross" &&
-        gameArr[4] === "cross" &&
-        gameArr[5] === "cross") ||
-      (gameArr[6] === "cross" &&
-        gameArr[7] === "cross" &&
-        gameArr[8] === "cross") ||
-      (gameArr[0] === "cross" &&
-        gameArr[3] === "cross" &&
-        gameArr[6] === "cross") ||
-      (gameArr[1] === "cross" &&
-        gameArr[4] === "cross" &&
-        gameArr[7] === "cross") ||
-      (gameArr[2] === "cross" &&
-        gameArr[5] === "cross" &&
-        gameArr[8] === "cross") ||
-      (gameArr[0] === "cross" &&
-        gameArr[4] === "cross" &&
-        gameArr[8] === "cross") ||
-      (gameArr[2] === "cross" &&
-        gameArr[4] === "cross" &&
-        gameArr[6] === "cross")
+      (gameArr[0] === "user" &&
+        gameArr[1] === "user" &&
+        gameArr[2] === "user") ||
+      (gameArr[3] === "user" &&
+        gameArr[4] === "user" &&
+        gameArr[5] === "user") ||
+      (gameArr[6] === "user" &&
+        gameArr[7] === "user" &&
+        gameArr[8] === "user") ||
+      (gameArr[0] === "user" &&
+        gameArr[3] === "user" &&
+        gameArr[6] === "user") ||
+      (gameArr[1] === "user" &&
+        gameArr[4] === "user" &&
+        gameArr[7] === "user") ||
+      (gameArr[2] === "user" &&
+        gameArr[5] === "user" &&
+        gameArr[8] === "user") ||
+      (gameArr[0] === "user" &&
+        gameArr[4] === "user" &&
+        gameArr[8] === "user") ||
+      (gameArr[2] === "user" &&
+        gameArr[4] === "user" &&
+        gameArr[6] === "user")
     ) {
       gameArr = [
         "empty",
@@ -62,28 +62,28 @@ const Game = ({ player }) => {
   };
   const pcWinLogic = () => {
     if (
-      (gameArr[0] === "zero" &&
-        gameArr[1] === "zero" &&
-        gameArr[2] === "zero") ||
-      (gameArr[3] === "zero" &&
-        gameArr[4] === "zero" &&
-        gameArr[5] === "zero") ||
-      (gameArr[6] === "zero" &&
-        gameArr[7] === "zero" &&
-        gameArr[8] === "zero") ||
-      (gameArr[0] === "zero" &&
-        gameArr[3] === "zero" &&
-        gameArr[6] === "zero") ||
-      (gameArr[1] === "zero" &&
-        gameArr[4] === "zero" &&
-        gameArr[7] === "zero") ||
-      (gameArr[2] === "cross" &&
-        gameArr[5] === "cross" &&
-        gameArr[8] === "cross") ||
-      (gameArr[0] === "zero" &&
-        gameArr[4] === "zero" &&
-        gameArr[8] === "zero") ||
-      (gameArr[2] === "zero" && gameArr[4] === "zero" && gameArr[6] === "zero")
+      (gameArr[0] === "cpu" &&
+        gameArr[1] === "cpu" &&
+        gameArr[2] === "cpu") ||
+      (gameArr[3] === "cpu" &&
+        gameArr[4] === "cpu" &&
+        gameArr[5] === "cpu") ||
+      (gameArr[6] === "cpu" &&
+        gameArr[7] === "cpu" &&
+        gameArr[8] === "cpu") ||
+      (gameArr[0] === "cpu" &&
+        gameArr[3] === "cpu" &&
+        gameArr[6] === "cpu") ||
+      (gameArr[1] === "cpu" &&
+        gameArr[4] === "cpu" &&
+        gameArr[7] === "cpu") ||
+      (gameArr[2] === "cpu" &&
+        gameArr[5] === "cpu" &&
+        gameArr[8] === "cpu") ||
+      (gameArr[0] === "cpu" &&
+        gameArr[4] === "cpu" &&
+        gameArr[8] === "cpu") ||
+      (gameArr[2] === "cpu" && gameArr[4] === "cpu" && gameArr[6] === "cpu")
     ) {
       gameArr = [
         "empty",
@@ -102,7 +102,7 @@ const Game = ({ player }) => {
   function pcPlay() {
     let randomBtn = Math.floor(Math.random() * 9);
     if (gameArr[randomBtn] === "empty") {
-      gameArr[randomBtn] = "zero";
+      gameArr[randomBtn] = "cpu";
       buttons.current.children[
         randomBtn
       ].innerHTML = `<img src=/assets/icons/${pcSelection} alt="0"/>`;
@@ -117,7 +117,7 @@ const Game = ({ player }) => {
     if (gameArr[e.target.id] === "empty") {
       refreshBtn.current.style.visibility = "visible";
       e.target.innerHTML = `<img src='/assets/icons/${userSelection}' alt='X'/>`;
-      gameArr[e.target.id] = "cross";
+      gameArr[e.target.id] = "user";
       console.log(gameArr);
       pcPlay();
       userWinLogic();
