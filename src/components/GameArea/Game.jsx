@@ -100,18 +100,21 @@ const Game = ({ player }) => {
     }
   };
   function pcPlay() {
+    setTimeout(()=>{
     let randomBtn = Math.floor(Math.random() * 9);
     if (gameArr[randomBtn] === "empty") {
       gameArr[randomBtn] = "cpu";
       buttons.current.children[
         randomBtn
       ].innerHTML = `<img src=/assets/icons/${pcSelection} alt="0"/>`;
-      changeTurn.current.innerHTML = `<img src='/assets/icons/cross.svg' alt='X'/>`;
-      pcWinLogic();
+      pcWinLogic(); 
+      changeTurn.current.innerHTML = `<img src='/assets/icons/game_cross.svg' alt='X'/>`;
     } else {
       pcPlay();
     }
+},2000)
   }
+
 
   const userPlay = (e) => {
     if (gameArr[e.target.id] === "empty") {
@@ -119,9 +122,9 @@ const Game = ({ player }) => {
       e.target.innerHTML = `<img src='/assets/icons/${userSelection}' alt='X'/>`;
       gameArr[e.target.id] = "user";
       console.log(gameArr);
+      changeTurn.current.innerHTML = `<img src='/assets/icons/cross.svg' alt='X'/>`;
       pcPlay();
       userWinLogic();
-      changeTurn.current.innerHTML = `<img src='/assets/icons/game_cross.svg' alt='X'/>`;
     } else {
       toast.error("Already Occupied", {
         style: {
