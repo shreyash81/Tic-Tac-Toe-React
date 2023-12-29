@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./Game.module.css";
 import toast, { Toaster } from "react-hot-toast";
+import Win from "../WinItem/Win";
 
 const Game = ({ player }) => {
   const userSelection = player;
@@ -8,6 +9,11 @@ const Game = ({ player }) => {
   let changeTurn = useRef(null);
   const buttons = useRef(null);
   const refreshBtn = useRef(null);
+  useEffect(() => {
+    if (userSelection === "big_zero.svg") {
+      changeTurn.current.innerHTML = `<img src='/assets/icons/game_zero.svg' alt='X'/>`;
+    }
+  }, []);
   let gameArr = [
     "empty",
     "empty",
@@ -42,9 +48,7 @@ const Game = ({ player }) => {
       (gameArr[0] === "user" &&
         gameArr[4] === "user" &&
         gameArr[8] === "user") ||
-      (gameArr[2] === "user" &&
-        gameArr[4] === "user" &&
-        gameArr[6] === "user")
+      (gameArr[2] === "user" && gameArr[4] === "user" && gameArr[6] === "user")
     ) {
       gameArr = [
         "empty",
@@ -62,27 +66,13 @@ const Game = ({ player }) => {
   };
   const pcWinLogic = () => {
     if (
-      (gameArr[0] === "cpu" &&
-        gameArr[1] === "cpu" &&
-        gameArr[2] === "cpu") ||
-      (gameArr[3] === "cpu" &&
-        gameArr[4] === "cpu" &&
-        gameArr[5] === "cpu") ||
-      (gameArr[6] === "cpu" &&
-        gameArr[7] === "cpu" &&
-        gameArr[8] === "cpu") ||
-      (gameArr[0] === "cpu" &&
-        gameArr[3] === "cpu" &&
-        gameArr[6] === "cpu") ||
-      (gameArr[1] === "cpu" &&
-        gameArr[4] === "cpu" &&
-        gameArr[7] === "cpu") ||
-      (gameArr[2] === "cpu" &&
-        gameArr[5] === "cpu" &&
-        gameArr[8] === "cpu") ||
-      (gameArr[0] === "cpu" &&
-        gameArr[4] === "cpu" &&
-        gameArr[8] === "cpu") ||
+      (gameArr[0] === "cpu" && gameArr[1] === "cpu" && gameArr[2] === "cpu") ||
+      (gameArr[3] === "cpu" && gameArr[4] === "cpu" && gameArr[5] === "cpu") ||
+      (gameArr[6] === "cpu" && gameArr[7] === "cpu" && gameArr[8] === "cpu") ||
+      (gameArr[0] === "cpu" && gameArr[3] === "cpu" && gameArr[6] === "cpu") ||
+      (gameArr[1] === "cpu" && gameArr[4] === "cpu" && gameArr[7] === "cpu") ||
+      (gameArr[2] === "cpu" && gameArr[5] === "cpu" && gameArr[8] === "cpu") ||
+      (gameArr[0] === "cpu" && gameArr[4] === "cpu" && gameArr[8] === "cpu") ||
       (gameArr[2] === "cpu" && gameArr[4] === "cpu" && gameArr[6] === "cpu")
     ) {
       gameArr = [
@@ -100,21 +90,24 @@ const Game = ({ player }) => {
     }
   };
   function pcPlay() {
-    setTimeout(()=>{
-    let randomBtn = Math.floor(Math.random() * 9);
-    if (gameArr[randomBtn] === "empty") {
-      gameArr[randomBtn] = "cpu";
-      buttons.current.children[
-        randomBtn
-      ].innerHTML = `<img src=/assets/icons/${pcSelection} alt="0"/>`;
-      pcWinLogic(); 
-      changeTurn.current.innerHTML = `<img src='/assets/icons/game_cross.svg' alt='X'/>`;
-    } else {
-      pcPlay();
-    }
-},2000)
+    setTimeout(() => {
+      let randomBtn = Math.floor(Math.random() * 9);
+      if (gameArr[randomBtn] === "empty") {
+        gameArr[randomBtn] = "cpu";
+        buttons.current.children[
+          randomBtn
+        ].innerHTML = `<img src=/assets/icons/${pcSelection} alt="0"/>`;
+        pcWinLogic();
+        if (userSelection === "big_zero.svg") {
+          changeTurn.current.innerHTML = `<img src='/assets/icons/game_zero.svg' alt='X'/>`;
+        } else {
+          changeTurn.current.innerHTML = `<img src='/assets/icons/game_cross.svg' alt='X'/>`;
+        }
+      } else {
+        pcPlay();
+      }
+    }, 400);
   }
-
 
   const userPlay = (e) => {
     if (gameArr[e.target.id] === "empty") {
@@ -122,7 +115,11 @@ const Game = ({ player }) => {
       e.target.innerHTML = `<img src='/assets/icons/${userSelection}' alt='X'/>`;
       gameArr[e.target.id] = "user";
       console.log(gameArr);
-      changeTurn.current.innerHTML = `<img src='/assets/icons/cross.svg' alt='X'/>`;
+      if (userSelection === "big_zero.svg") {
+        changeTurn.current.innerHTML = `<img src='/assets/icons/game_cross.svg' alt='X'/>`;
+      } else {
+        changeTurn.current.innerHTML = `<img src='/assets/icons/game_zero.svg' alt='X'/>`;
+      }
       pcPlay();
       userWinLogic();
     } else {
@@ -146,6 +143,7 @@ const Game = ({ player }) => {
   return (
     <>
       <Toaster position="top-right" reverseOrder={false} />
+       <Win />
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.icons}>
