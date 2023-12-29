@@ -42,13 +42,14 @@
   outline: none;
   border: none;
   background: none;
+  padding: 0;
 }
 .container #cross:hover,
 .container #zero:hover {
-  padding: 0.2rem 2rem;
-  border-radius: 0.3rem;
-  background: #fff;
-  transition: padding 0.4s ease-in-out;
+
+
+scale: 1.2;
+
 }
 
 .container .new_game_cpu,
