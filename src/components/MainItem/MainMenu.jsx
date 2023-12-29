@@ -65,13 +65,13 @@ const MainMenu = ({player,setPlayer,page,setPage}) => {
   }
 
   const setCross = () => {
-    setPlayer("Cross");
+    setPlayer("big_x.svg");
     clickCrossStyles();
     
   }
 
   const setZero = () => { 
-    setPlayer("Zero")
+    setPlayer("big_zero.svg")
     clickZeroStyles();
   }
 

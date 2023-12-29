@@ -38,7 +38,7 @@
       border-radius: 0.3rem;
       box-shadow: 0 0.25rem 0.25rem #000000;
       background: #A7BDC8;
-      /* visibility: hidden; */
+      visibility: hidden;
 }
 
 .game_container {
@@ -47,6 +47,9 @@
 }
 
 .game_container .game_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 5.2rem;
     width: 5.2rem;
     outline: none;
@@ -55,8 +58,10 @@
     box-shadow: 0 0.25rem 0.25rem #000000;
     background: var(--color-accent-4);
     margin: var(--margin-small) auto;
+    cursor: pointer;
     
 }
+
 
 .score_container {
     margin-top: var(--margin-small-s);

@@ -1,0 +1,8 @@
+.container {
+    top: 20rem;
+    left: 33rem;
+    position: fixed;
+    height: 14rem;
+    width: 24rem;
+    background: var(--color-accent);
+}
