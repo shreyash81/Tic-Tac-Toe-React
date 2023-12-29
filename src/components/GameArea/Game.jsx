@@ -11,10 +11,10 @@ const Game = () => {
              <img src="/assets/icons/zero.svg" alt="0" />
              </div>
              <div className={styles.turn_container}>
-                <span className={styles.game_cross}><img src='/public/assets/icons/game_cross.svg' alt='X'/></span>
+                <span className={styles.game_cross}><img src='/assets/icons/game_cross.svg' alt='X'/></span>
                 <span className={styles.text}>TURN</span>
              </div>
-             <button className={styles.refresh_btn}><img src='/public/assets/icons/refresh.svg' alt='refresh'/></button>
+             <button className={styles.refresh_btn}><img src='/assets/icons/refresh.svg' alt='refresh'/></button>
              </div>
          <div className={styles.game_container} >
             <button className={styles.game_btn} id={styles.btn_1}></button>
