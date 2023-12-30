@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Game.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import Win from "../WinItem/Win";
-import { useSearchParams } from "react-router-dom";
 
 const Game = ({ player, setPage, setPlayer }) => {
   const userSelection = player;
@@ -93,6 +92,7 @@ const Game = ({ player, setPage, setPlayer }) => {
       removeStyles();
       refreshBtn.current.style.visibility = "hidden";
       enablesButtons();
+      setNextRound(false);
     }
   }, [nextRound]);
 
