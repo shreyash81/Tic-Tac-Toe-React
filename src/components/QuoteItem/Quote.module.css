@@ -23,7 +23,7 @@
   padding: 0.6rem var(--margin-small);
   border-radius: 50%;
   display: inline-block;
-  margin-top: var(--margin-small-s);
+  margin-top: 0.2rem;
 }
 
 .container .advice {

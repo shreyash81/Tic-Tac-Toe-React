@@ -15,7 +15,7 @@ const Home = () => {
       </div>
       <div className={styles.game_container}>
        {page===1 && <MainMenu player={player} setPlayer={setPlayer} page={page} setPage={setPage}/> }
-        {page===2 && <Game player={player}/> }
+        {page===2 && <Game player={player} setPlayer={setPlayer} setPage={setPage}/> }
       </div>
     </div>
   );
