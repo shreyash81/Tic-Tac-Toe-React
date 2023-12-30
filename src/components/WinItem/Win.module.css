@@ -1,52 +1,51 @@
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    top: 20rem;
-    left: 45rem;
-    position: fixed;
-    height: 14rem;
-    width: 24rem;
-    background: var(--color-accent);
-    text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 20rem;
+  left: 45rem;
+  position: fixed;
+  height: 14rem;
+  width: 24rem;
+  background: var(--color-accent);
+  text-transform: uppercase;
 }
 
 .container .head {
-    font-size: var(--font-small);
-    color: #fff;
-    font-weight: 600;
+  font-size: var(--font-small);
+  color: #fff;
+  font-weight: 600;
 }
- .container img {
-    height: 1.8rem;
-    width: 1.8rem;
-    margin-top: var(--margin-medium-sm);
-    margin-right: var(--margin-small-s);
+.container img {
+  height: 1.8rem;
+  width: 1.8rem;
+  margin-top: var(--margin-medium-sm);
+  margin-right: var(--margin-small-s);
 }
 .center_container {
-    display: flex;
+  display: flex;
 }
 .button_container {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
 .button_container button {
-    height: 2rem;
-    width: 6rem;
-    text-align: center;
-    background: var(--color-accent-2);
-    outline: none;
-    border: none;
-    border-radius: 0.6rem;
-    text-transform: uppercase;
-    font-weight: 600;
+  height: 2rem;
+  width: 6rem;
+  text-align: center;
+  background: var(--color-accent-2);
+  outline: none;
+  border: none;
+  border-radius: 0.6rem;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 .button_container button:nth-child(2) {
-   background: var(--text-color);
+  background: var(--text-color);
 }
 h2 {
-    display: inline-block;
-    color: var(--color-accent-2);
+  display: inline-block;
+  color: var(--color-accent-2);
 }
-

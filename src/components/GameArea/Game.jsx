@@ -27,13 +27,8 @@ const Game = ({ player, setPage, setPlayer }) => {
     "empty",
   ]);
 
-  function removeStyles() {
-    for (let i = 0; i < 9; i++) {
-      buttons.current.children[i].innerHTML = "";
-    }
-  }
-
   function refreshGame() {
+    console.log("refresh");
     setGameARR([
       "empty",
       "empty",
@@ -44,13 +39,22 @@ const Game = ({ player, setPage, setPlayer }) => {
       "empty",
       "empty",
       "empty",
-    ]);
-    setWhowins("");
-    removeStyles();
+    ])
+    refreshBtn.current.style.display = "none";
     setPcScore(0);
     setUserScore(0);
     setTies(0);
-    refreshBtn.current.style.visibility = "hidden";
+    setWhowins("");
+    setTimeout(() => {
+      removeStyles();
+      enablesButtons()
+    }, 700);
+  }
+
+  function removeStyles() {
+    for (let i = 0; i < 9; i++) {
+      buttons.current.children[i].innerHTML = "";
+    }
   }
 
   function homeScreen() {
@@ -90,7 +94,7 @@ const Game = ({ player, setPage, setPlayer }) => {
       console.log("hello");
       setWhowins("");
       removeStyles();
-      refreshBtn.current.style.visibility = "hidden";
+      refreshBtn.current.style.display = "none";
       enablesButtons();
       setNextRound(false);
     }
@@ -245,13 +249,14 @@ const Game = ({ player, setPage, setPlayer }) => {
       } else {
         pcPlay();
       }
-      setTimeout(()=> {
+      setTimeout(() => {
         enablesButtons();
-      },500)
-    }, 1000);
+      }, 800);
+    }, 700);
   }
 
   const userPlay = (e) => {
+    console.log("hello")
     if (
       (gameArr[0] === "cpu" && gameArr[1] === "cpu" && gameArr[2] === "cpu") ||
       (gameArr[3] === "cpu" && gameArr[4] === "cpu" && gameArr[5] === "cpu") ||
@@ -265,10 +270,9 @@ const Game = ({ player, setPage, setPlayer }) => {
       return;
     }
     if (gameArr[e.target.id] === "empty") {
-      refreshBtn.current.style.visibility = "visible";
+      refreshBtn.current.style.display = "block";
       e.target.innerHTML = `<img src='/assets/icons/${userSelection}' alt='X'/>`;
       gameArr[e.target.id] = "user";
-      console.log(gameArr);
       if (userSelection === "big_zero.svg") {
         changeTurn.current.innerHTML = `<img src='/assets/icons/game_cross.svg' alt='X'/>`;
       } else {

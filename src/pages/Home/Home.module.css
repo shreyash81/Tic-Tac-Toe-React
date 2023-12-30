@@ -1,21 +1,21 @@
-.home{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 .quote_container {
-    align-self: flex-end;
-    margin-bottom: var(--margin-medium-large);
-    margin-right: var(--margin-large);
+  align-self: flex-end;
+  margin-bottom: var(--margin-medium-large);
+  margin-right: var(--margin-large);
 }
 .game_container {
- height: 46rem;
- width: 26rem;
- background: var(--color-accent);
- outline: none;
- border-radius: 2.5rem;
- display: flex;
- justify-content: center;
- align-items: center;
+  height: 46rem;
+  width: 26rem;
+  background: var(--color-accent);
+  outline: none;
+  border-radius: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

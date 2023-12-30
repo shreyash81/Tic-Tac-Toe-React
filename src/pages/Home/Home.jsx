@@ -1,8 +1,7 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Quote from "../../components/QuoteItem/Quote";
-import MainMenu from '../../components/MainItem/MainMenu'
-import Game from '../../components/GameArea/Game'
-
+import MainMenu from "../../components/MainItem/MainMenu";
+import Game from "../../components/GameArea/Game";
 
 import styles from "./Home.module.css";
 const Home = () => {
@@ -11,11 +10,20 @@ const Home = () => {
   return (
     <div className={styles.home}>
       <div className={styles.quote_container}>
-    <Quote />
+        <Quote />
       </div>
       <div className={styles.game_container}>
-       {page===1 && <MainMenu player={player} setPlayer={setPlayer} page={page} setPage={setPage}/> }
-        {page===2 && <Game player={player} setPlayer={setPlayer} setPage={setPage}/> }
+        {page === 1 && (
+          <MainMenu
+            player={player}
+            setPlayer={setPlayer}
+            page={page}
+            setPage={setPage}
+          />
+        )}
+        {page === 2 && (
+          <Game player={player} setPlayer={setPlayer} setPage={setPage} />
+        )}
       </div>
     </div>
   );
