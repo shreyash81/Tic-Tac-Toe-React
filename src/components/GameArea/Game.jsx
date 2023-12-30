@@ -252,11 +252,10 @@ const Game = ({ player, setPage, setPlayer }) => {
       setTimeout(() => {
         enablesButtons();
       }, 800);
-    }, 700);
+    }, 600);
   }
 
   const userPlay = (e) => {
-    console.log("hello")
     if (
       (gameArr[0] === "cpu" && gameArr[1] === "cpu" && gameArr[2] === "cpu") ||
       (gameArr[3] === "cpu" && gameArr[4] === "cpu" && gameArr[5] === "cpu") ||
