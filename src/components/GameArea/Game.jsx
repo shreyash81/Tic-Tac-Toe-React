@@ -247,8 +247,7 @@ const Game = ({ player, setPage, setPlayer }) => {
       }
       setTimeout(()=> {
         enablesButtons();
-      
-      enablesButtons()},1000)
+      },500)
     }, 1000);
   }
 
