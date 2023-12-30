@@ -245,8 +245,11 @@ const Game = ({ player, setPage, setPlayer }) => {
       } else {
         pcPlay();
       }
-      enablesButtons();
-    }, 10);
+      setTimeout(()=> {
+        enablesButtons();
+      
+      enablesButtons()},1000)
+    }, 1000);
   }
 
   const userPlay = (e) => {
