@@ -4,20 +4,16 @@ import toast, { Toaster } from "react-hot-toast";
 import Win from "../WinItem/Win";
 
 
-const Game = ({ player, setPage, setPlayer }) => {
+const Game = ({ player, setPage, setPlayer,page }) => {
   const userSelection = player;
   let pcSelection = player === "big_zero.svg" ? "big_x.svg" : "big_zero.svg";
   let changeTurn = useRef(null);
   const buttons = useRef(null);
   const refreshBtn = useRef(null);
-  // let [userScore, setUserScore] = useState(0);
-  // let [pcScore, setPcScore] = useState(0);
-  // let [ties, setTies] = useState(0);
   let [whowins, setWhowins] = useState("");
   let [nextRound, setNextRound] = useState(false);
   let [xzero, setXzero] = useState(userSelection);
-    
-    // localStorage.setItem("cpuScore",0)
+
  
   let [gameArr, setGameARR] = useState([
     "empty",
@@ -127,6 +123,9 @@ const Game = ({ player, setPage, setPlayer }) => {
     if (userSelection === "big_zero.svg") {
       changeTurn.current.innerHTML = `<img src='/assets/icons/game_zero.svg' alt='X'/>`;
     } 
+
+     localStorage.setItem('players',userSelection)
+
   }, []);
   const tiesLogic = () => {
     if (
@@ -156,7 +155,6 @@ const Game = ({ player, setPage, setPlayer }) => {
       setXzero("noOne");
       let temp = localStorage.getItem('tiesScore')
       temp = Number(temp)+1
-      console.log(temp)
        localStorage.setItem('tiesScore',temp)
     }
   };
@@ -204,6 +202,7 @@ const Game = ({ player, setPage, setPlayer }) => {
        temp = Number(temp)+1
        console.log(temp)
         localStorage.setItem('userScore',temp)
+        // setLocalStore(1)
     }
   };
 

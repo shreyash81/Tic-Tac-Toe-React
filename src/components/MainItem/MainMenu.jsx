@@ -89,6 +89,7 @@ const MainMenu = ({ player, setPlayer, page, setPage }) => {
       });
     } else {
       setPage(2);
+      
     }
   }
 
