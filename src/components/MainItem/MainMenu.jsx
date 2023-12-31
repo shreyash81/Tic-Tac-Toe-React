@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import styles from "./MainMenu.module.css";
 
@@ -70,7 +70,7 @@ const MainMenu = ({ player, setPlayer, page, setPage }) => {
     setPlayer("big_zero.svg");
     clickZeroStyles();
   };
-
+  
   const checkPlayer = () => {
     if (player === "") {
       toast.error("Kindly Select Zero or Cross", {
@@ -90,9 +90,10 @@ const MainMenu = ({ player, setPlayer, page, setPage }) => {
     } else {
       setPage(2);
     }
-  };
+  }
 
   return (
+    <>
     <div className={styles.container}>
       <Toaster position="top-right" reverseOrder={false} />
       <div className={styles.icons}>
@@ -108,7 +109,7 @@ const MainMenu = ({ player, setPlayer, page, setPage }) => {
             id={styles.cross}
             ref={cross}
             onClick={setCross}
-          >
+            >
             <img src="/assets/icons/cross.svg" alt="X" />
           </button>
           <button
@@ -116,7 +117,7 @@ const MainMenu = ({ player, setPlayer, page, setPage }) => {
             id={styles.zero}
             ref={zero}
             onClick={setZero}
-          >
+            >
             <img src="/assets/icons/zero.svg" alt="0" />
           </button>
         </div>
@@ -131,6 +132,7 @@ const MainMenu = ({ player, setPlayer, page, setPage }) => {
         Invite Your Friend
       </button>
     </div>
+            </>
   );
 };
 

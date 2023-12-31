@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Game.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import Win from "../WinItem/Win";
+
 
 const Game = ({ player, setPage, setPlayer }) => {
   const userSelection = player;
@@ -9,12 +10,15 @@ const Game = ({ player, setPage, setPlayer }) => {
   let changeTurn = useRef(null);
   const buttons = useRef(null);
   const refreshBtn = useRef(null);
-  let [userScore, setUserScore] = useState(0);
-  let [pcScore, setPcScore] = useState(0);
-  let [ties, setTies] = useState(0);
+  // let [userScore, setUserScore] = useState(0);
+  // let [pcScore, setPcScore] = useState(0);
+  // let [ties, setTies] = useState(0);
   let [whowins, setWhowins] = useState("");
   let [nextRound, setNextRound] = useState(false);
   let [xzero, setXzero] = useState(userSelection);
+    
+    // localStorage.setItem("cpuScore",0)
+ 
   let [gameArr, setGameARR] = useState([
     "empty",
     "empty",
@@ -41,10 +45,13 @@ const Game = ({ player, setPage, setPlayer }) => {
       "empty",
     ])
     refreshBtn.current.style.display = "none";
-    setPcScore(0);
-    setUserScore(0);
-    setTies(0);
+    // setPcScore(0);
+    // setUserScore(0);
+    // setTies(0);
     setWhowins("");
+    localStorage.setItem('cpuScore',0)
+    localStorage.setItem('tiesScore',0)
+    localStorage.setItem('userScore',0)
     setTimeout(() => {
       removeStyles();
       enablesButtons()
@@ -58,9 +65,12 @@ const Game = ({ player, setPage, setPlayer }) => {
   }
 
   function homeScreen() {
-    setPcScore(0);
-    setUserScore(0);
-    setTies(0);
+    // setPcScore(0);
+    // setUserScore(0);
+    // setTies(0);
+    localStorage.setItem('cpuScore',0)
+    localStorage.setItem('tiesScore',0)
+    localStorage.setItem('userScore',0)
     refreshGame();
     setPage(1);
     setPlayer("");
@@ -77,6 +87,8 @@ const Game = ({ player, setPage, setPlayer }) => {
       buttons.current.children[i].disabled = false;
     }
   }
+
+
   useMemo(() => {
     // enablesButtons();
     if (nextRound == true) {
@@ -91,19 +103,30 @@ const Game = ({ player, setPage, setPlayer }) => {
         "empty",
         "empty",
       ]);
-      console.log("hello");
       setWhowins("");
       removeStyles();
       refreshBtn.current.style.display = "none";
       enablesButtons();
-      setNextRound(false);
+      setNextRound(false); 
     }
+
+
   }, [nextRound]);
+
+  // useMemo(()=>{
+  //   localStorage.setItem("cpuScore",pcScore)
+  // },[pcScore])
+  // useMemo(()=>{
+  //   localStorage.setItem("userScore",userScore)
+  // },[userScore])
+  // useMemo(()=>{
+  //   localStorage.setItem("ties",ties)
+  // },[ties])
 
   useEffect(() => {
     if (userSelection === "big_zero.svg") {
       changeTurn.current.innerHTML = `<img src='/assets/icons/game_zero.svg' alt='X'/>`;
-    }
+    } 
   }, []);
   const tiesLogic = () => {
     if (
@@ -129,9 +152,12 @@ const Game = ({ player, setPage, setPlayer }) => {
         "empty",
       ]);
       setWhowins("ties");
-      setTies(ties + 1);
+      // setTies(ties + 1);
       setXzero("noOne");
-      console.log("ties");
+      let temp = localStorage.getItem('tiesScore')
+      temp = Number(temp)+1
+      console.log(temp)
+       localStorage.setItem('tiesScore',temp)
     }
   };
   const userWinLogic = (e) => {
@@ -173,7 +199,11 @@ const Game = ({ player, setPage, setPlayer }) => {
       setXzero(userSelection);
       disableButtons();
       setWhowins("user");
-      setUserScore(userScore + 1);
+      // setUserScore(userScore + 1);
+       let temp = localStorage.getItem('userScore')
+       temp = Number(temp)+1
+       console.log(temp)
+        localStorage.setItem('userScore',temp)
     }
   };
 
@@ -201,8 +231,12 @@ const Game = ({ player, setPage, setPlayer }) => {
       ]);
       setXzero(pcSelection);
       setWhowins("pc");
-      setPcScore(pcScore + 1);
-      console.log("pc wins");
+      // setPcScore(pcScore + 1);
+      let temp = localStorage.getItem('cpuScore')
+      temp = Number(temp)+1
+      console.log(temp)
+       localStorage.setItem('cpuScore',temp)
+
     }
   };
   function pcPlay() {
@@ -337,7 +371,7 @@ const Game = ({ player, setPage, setPlayer }) => {
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.icons}>
-            <img src="/assets/icons/cross.svg" alt="X" />
+            <img src="/assets/icons/cross.svg" alt="X"/>
             &nbsp;
             <img src="/assets/icons/zero.svg" alt="0" />
           </div>
@@ -406,13 +440,13 @@ const Game = ({ player, setPage, setPlayer }) => {
         <div className={styles.score_container}>
           <div className={styles.score}>
             X (YOU)
-            <span className={styles.score_value}>{userScore}</span>
+            <span className={styles.score_value}>{localStorage.getItem('userScore')}</span>
           </div>
           <div className={styles.score}>
-            TIES <span className={styles.ties_value}>{ties}</span>
+            TIES <span className={styles.ties_value}>{localStorage.getItem('tiesScore')}</span>
           </div>
           <div className={styles.score}>
-            O (CPU) <span className={styles.cpu_score}>{pcScore}</span>{" "}
+            O (CPU) <span className={styles.cpu_score}>{localStorage.getItem('cpuScore')}</span>{" "}
           </div>
         </div>
       </div>
