@@ -29,7 +29,7 @@
   .game_container {
     /* margin-top: var(--margin-small); */
     height: 100%;
-    width: 100%;
+    width: 95%;
     margin-bottom: var(--margin-small-s);
   }
   .quote_container {
