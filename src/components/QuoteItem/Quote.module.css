@@ -35,3 +35,26 @@
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+@media screen and (max-width: 428px) {
+ 
+  .container {
+    height: 11.5rem;
+    width: 14rem;
+  }
+  .container h2 {
+    font-size: var(--font-small);
+  }
+  .container p {
+    font-size: var(--font-extra-small);
+  }
+  .container span {
+    padding: 0.6rem var(--margin-small);
+  }
+  .container .advice {
+    height: 6rem;
+    width: 14rem;
+    font-size: var(--font-extra-small);
+  }
+    
+}
