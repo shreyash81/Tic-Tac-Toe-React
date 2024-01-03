@@ -5,6 +5,9 @@
   height: 100vh;
 }
 .quote_container {
+  position: fixed;
+  top: 58vh;
+  left: 10vw;
   margin-bottom: var(--margin-medium-large);
   margin-right: var(--margin-large);
 }
