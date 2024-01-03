@@ -14,6 +14,9 @@ Experience the fun of Tic Tac Toe at [Tic Tac Toe](https://tictactoe-reactgame.v
 ![App Screenshot](/public/assets/images/home_screen.png)
 ![App Screenshot](/public/assets/images/play_area.png)
 ![App Screenshot](/public/assets/images/play_area_2.png)
+![App Screenshot](/public/assets/images/mobile_screen.png)
+![App Screenshot](/public/assets/images/mobile_play_area.png)
+
 
 ## Usage
 
