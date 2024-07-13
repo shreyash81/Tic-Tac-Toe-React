@@ -1,13 +1,12 @@
  pipeline {
-    agent {
-        docker {
+   agent {
+     docker {
             image 'node:14' // Use a Node.js Docker image
             args '-u root --privileged' // Run as root user and with privileged mode if needed
         }
     }
 
-    
-    }
+   }
 
     stages {
         stage('Checkout') {
