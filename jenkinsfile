@@ -6,8 +6,6 @@
         }
     }
 
-   }
-
     stages {
         stage('Checkout') {
             steps {
@@ -58,4 +56,5 @@ stage('Build and Push Docker Image') {
             echo 'Pipeline failed!'
         }
     }
+}
 
