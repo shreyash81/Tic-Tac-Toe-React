@@ -13,7 +13,7 @@ pipeline {
         stage('Checkout') {
             steps {
               sh  echo 'Checking out code...'
-                git branch: 'main', url: 'https://github.com/shreyash81/Tic-Tac-Toe-React/tree/main'
+             checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/shreyash81/Tic-Tac-Toe-React.git']]])
             }
         }
 
