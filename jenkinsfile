@@ -6,7 +6,7 @@ pipeline {
         }
     }
    environment {
-        PATH = "/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+         PATH = "/usr/bin:$PATH"
     }
 
     stages {
