@@ -6,7 +6,7 @@ pipeline {
         }
     }
    environment {
-         PATH = "/usr/bin:$PATH"
+       PATH = "/usr/local/bin:$PATH"
     }
 
     stages {
@@ -35,7 +35,7 @@ pipeline {
             environment {
                 REGISTRY_CREDENTIALS = credentials('docker-cred')
                 DOCKER_IMAGE = "chauhanshreyash18/ultimate-cicd:${BUILD_NUMBER}"
-                DOCKERFILE_LOCATION = "Tic-Tac-Toe-React/Dockerfile"
+                DOCKERFILE_LOCATION = "./Tic-Tac-Toe-React/Dockerfile"
             }
             steps {
                 script {
