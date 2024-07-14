@@ -1,14 +1,17 @@
-# Use an official Node.js LTS version as the base image
+# Use a different Node.js version
 FROM node:16
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install --production
+# Update npm to the latest version
+RUN npm install -g npm@latest
+
+# Clean npm cache and install dependencies
+RUN npm cache clean --force && npm install
 
 # Copy the rest of the application files to the working directory
 COPY . .
@@ -16,8 +19,5 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Expose the port your app runs on
-EXPOSE 3000
-
-# Command to run the application
+# Start the application
 CMD ["npm", "start"]
