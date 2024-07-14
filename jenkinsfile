@@ -5,9 +5,10 @@ pipeline {
             args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
-   environment {
-        // Add Docker to PATH
-        PATH = "/usr/bin:$PATH"
+      environment {
+         // Append /usr/bin to PATH using PATH+EXTRA syntax
+                PATH+EXTRA = "/usr/bin"
+      
 }
 
     stages {
@@ -34,14 +35,16 @@ pipeline {
 
         stage('Build and Push Docker Image') {
             environment {
+                   // Append /usr/bin to PATH using PATH+EXTRA syntax
+                PATH+EXTRA = "/usr/bin"
                // DOCKER_IMAGE = "chauhanshreyash18/ultimate-cicd:${BUILD_NUMBER}"
-                DOCKERFILE_LOCATION = "Tic-Tac-Toe-React/Dockerfile"
+                // DOCKERFILE_LOCATION = "Tic-Tac-Toe-React/Dockerfile"
                 REGISTRY_CREDENTIALS = credentials('docker-cred')
             }
             steps {
                 script {
                     sh 'docker --version'
-                    sh 'pwd && docker build -t latest . '
+                    sh 'docker build -t latest .'
                     def dockerImage = docker.image("${DOCKER_IMAGE}")
                     docker.withRegistry('https://index.docker.io', "docker-cred") {
                         dockerImage.push()
