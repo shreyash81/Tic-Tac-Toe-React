@@ -36,7 +36,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh ' docker build -t ${DOCKER-IMAGE} . '
+                    sh ' docker build -t chauhanshreyash18/ultimate-cicd . '
                     def dockerImage = docker.image("${DOCKER_IMAGE}")
                     docker.withRegistry('https://index.docker.io', "docker-cred") {
                         dockerImage.push()
