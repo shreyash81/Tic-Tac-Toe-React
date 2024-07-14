@@ -8,6 +8,7 @@ pipeline {
    environment {
         // Add Docker to PATH
         PATH = "/usr/bin:$PATH"
+}
 
     stages {
         stage('Checkout') {
