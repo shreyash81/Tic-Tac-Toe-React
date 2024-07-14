@@ -30,13 +30,13 @@ pipeline {
 
         stage('Build and Push Docker Image') {
             environment {
-                DOCKER_IMAGE = "chauhanshreyash18/ultimate-cicd:${BUILD_NUMBER}"
+               // DOCKER_IMAGE = "chauhanshreyash18/ultimate-cicd:${BUILD_NUMBER}"
                 DOCKERFILE_LOCATION = "Tic-Tac-Toe-React/Dockerfile"
                 REGISTRY_CREDENTIALS = credentials('docker-cred')
             }
             steps {
                 script {
-                    sh ' docker build -t chauhanshreyash18/ultimate-cicd . '
+                    sh 'pwd && docker build -t latest . '
                     def dockerImage = docker.image("${DOCKER_IMAGE}")
                     docker.withRegistry('https://index.docker.io', "docker-cred") {
                         dockerImage.push()
