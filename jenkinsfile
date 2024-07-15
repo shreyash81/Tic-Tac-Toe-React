@@ -2,6 +2,7 @@ pipeline {
     agent {
         docker {
             image 'chauhanshreyash18/my-jenkins-agent:latest'
+             args '-u 1000:1000 --group-add=46 --privileged'
              
             
         }
