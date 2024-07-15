@@ -1,23 +1,24 @@
-# Use a different Node.js version
-FROM node:16
+# Use Node.js base image
+FROM node:16-alpine
 
-# Set the working directory
-WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+#Giving ARG path for my artifact
+ARG artifact_path=./dis
 
-# Update npm to the latest version
-RUN npm install -g npm@latest
 
-# Clean npm cache and install dependencies
-RUN npm cache clean --force && npm install
+# Set the working directory inside the container
+WORKDIR /usr/src/app
 
-# Copy the rest of the application files to the working directory
-COPY . .
 
-# Build the application
-RUN npm run build
+# Copy the entire directory specified by ${artifact_path} into the contianer and rename as app/ directory
+COPY ${artifact_path} app/
 
-# Start the application
-CMD ["npm", "start"]
+#You can copy the entire directiory specified by ${artifact_path} into working directory also
+#COPY ${artifact_path}./
+
+
+# Expose port 3000 (if your Node.js application listens on a different port, adjust accordingly)
+EXPOSE 3000
+
+# Command to run the Node.js application
+CMD ["node", "app/server.js"]
