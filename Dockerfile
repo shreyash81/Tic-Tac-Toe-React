@@ -1,24 +1,17 @@
-# Use Node.js base image
-FROM node:16-alpine
+# Use the official Nginx image from the Docker Hub
+FROM nginx:latest
 
-
-#Giving ARG path for my artifact
-ARG artifact_path=./dis
-
+# Giving ARG path for my artifact
+ARG artifact_path=./dist
 
 # Set the working directory inside the container
-WORKDIR /usr/src/app
+WORKDIR /usr/share/nginx/html
 
+# Copy the entire directory specified by ${artifact_path} into the container's Nginx root directory
+COPY ${artifact_path} .
 
-# Copy the entire directory specified by ${artifact_path} into the contianer and rename as app/ directory
-COPY ${artifact_path} app/
+# Expose port 80 (Nginx listens on port 80 by default)
+EXPOSE 80
 
-#You can copy the entire directiory specified by ${artifact_path} into working directory also
-#COPY ${artifact_path}./
-
-
-# Expose port 3000 (if your Node.js application listens on a different port, adjust accordingly)
-EXPOSE 3000
-
-# Command to run the Node.js application
-CMD ["node", "app/server.js"]
+# Start Nginx when the container launches
+CMD ["nginx", "-g", "daemon off;"]
