@@ -41,7 +41,7 @@ pipeline {
             environment {
                 REGISTRY_CREDENTIALS = credentials('docker-cred')
                 DOCKER_IMAGE = "chauhanshreyash18/ultimate-cicd:${BUILD_NUMBER}"
-                DOCKERFILE_LOCATION = "./Tic-Tac-Toe-React/Dockerfile"
+                DOCKERFILE_LOCATION = "./Dockerfile"
             }
             steps {
                 script {
