@@ -1,11 +1,12 @@
 pipeline {
     agent {
         docker {
-            image 'chauhanshreyash18/my-npm-jenkins-docker-agentss:v1'          
+            image 'node:16'          
             args '-v /var/run/docker.sock:/var/run/docker.sock --user root'
             
         }
     }
+  
    
 
     stages {
@@ -15,6 +16,21 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/shreyash81/Tic-Tac-Toe-React.git']]])
             }
         }
+        stage('Install Docker') {
+            steps {
+               sh '''
+                   apt-get update
+                   apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+                   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+                   add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+                   apt-get update
+                   apt-get install -y docker-ce docker-ce-cli containerd.io
+           '''
+       }
+   }
+    ⁠
+
+
 
         stage('Install Dependencies') {
             steps {
