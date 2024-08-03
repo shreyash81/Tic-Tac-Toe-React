@@ -17,6 +17,7 @@ phases:
     commands:
       - cd AWS-CICD/
       - npm install
+      - echo "DOCKER_IMAGE=${DOCKER_IMAGE}"
   build:
     commands:
       - echo "Building the peoject"
