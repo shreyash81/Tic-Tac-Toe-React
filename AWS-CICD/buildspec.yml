@@ -1,6 +1,5 @@
 version: 0.2
 
-
 env:
   variables:
     DOCKER_IMAGE: "chauhanshreyash18/aws-ultimate-cicd:${CODEBUILD_BUILD_NUMBER}"
@@ -8,27 +7,31 @@ env:
   parameter-store:  
     DOCKER_USERNAME: /myapp/docker-credentials/username
     DOCKER_PASSWORD: /myapp/docker-credentials/password
-   # DOCKER_URL: /myapp/docker-registry/url
+
 phases:
   install:
-    runtime-version:
-    nodejs: 14
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - echo "Installing dependencies..."
+
   pre_build:
     commands:
       - cd AWS-CICD/
       - npm install
       - echo "DOCKER_IMAGE=${DOCKER_IMAGE}"
       - echo "CODEBUILD_BUILD_NUMBER=${CODEBUILD_BUILD_NUMBER}"
+
   build:
     commands:
-      - echo "Building the peoject"
+      - echo "Building the project..."
       - npm run build
-      - echo "Building the Docker image"
-      - docker build -t "${DOCKER_IMAGE}" .
+      - echo "Building the Docker image..."
+      - docker build -t "${DOCKER_IMAGE}" -f "${DOCKERFILE_LOCATION}" .
       - docker tag "${DOCKER_IMAGE}" "index.docker.io/${DOCKER_IMAGE}"
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker push index.docker.io/"${DOCKER_IMAGE}"
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "index.docker.io"
+      - docker push "index.docker.io/${DOCKER_IMAGE}"
+
   post_build:
     commands:
-      - echo "build is successfull"
-
+      - echo "Build is successful"
