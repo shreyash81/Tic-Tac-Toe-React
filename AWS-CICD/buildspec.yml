@@ -3,7 +3,7 @@ version: 0.2
 
 env:
   variables:
-    DOCKER_IMAGE: "$DOCKER_USERNAME/aws-ultimate-cicd:latest"
+    DOCKER_IMAGE: chauhanshreyash18/aws-ultimate-cicd:latest"
     DOCKERFILE_LOCATION: "./Dockerfile"
   parameter-store:  
     DOCKER_USERNAME: /myapp/docker-credentials/username
@@ -23,9 +23,9 @@ phases:
       - echo "Building the peoject"
       - npm run build
       - echo "Building the Docker image"
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t "$DOCKER_IMAGE" .
       - docker tag "$DOCKER_IMAGE" index.docker.io/"$DOCKER_IMAGE"
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker push index.docker.io/"$DOCKER_IMAGE"
   post_build:
     commands:
