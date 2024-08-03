@@ -23,8 +23,8 @@ phases:
       - npm run build
       - echo "Building the Docker image"
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t "$DOCKER_IMAGE" -f "$DOCKERFILE_LOCATION" .
-      - docker push "$DOCKER_URL"/"$DOCKER_IMAGE"
+      - docker build -t "$DOCKER_IMAGE -f $DOCKERFILE_LOCATION" .
+      - docker push "$DOCKER_URL/$DOCKER_IMAGE"
   post_build:
     commands:
       - echo "build is successfull"
