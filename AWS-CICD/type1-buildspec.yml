@@ -26,9 +26,12 @@ phases:
     commands:
       - echo "Building the project..."
       - npm run build
+      
       - echo "Building the Docker image..."
       - docker build -t "${DOCKER_IMAGE}" .
+      
       - docker tag "${DOCKER_IMAGE}" "index.docker.io/${DOCKER_IMAGE}"
+      
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin 
       - docker push "index.docker.io/${DOCKER_IMAGE}"
 
