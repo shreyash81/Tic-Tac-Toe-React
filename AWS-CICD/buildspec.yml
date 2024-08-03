@@ -3,7 +3,7 @@ version: 0.2
 
 env:
   variables:
-    DOCKER_IMAGE: "chauahanshreyash18/AWS-ultimate-CICD:latest"
+    DOCKER_IMAGE: "chauahanshreyash18/aws-ultimate-cicd:latest"
     DOCKERFILE_LOCATION: "AWS-CICD/Dockerfile"
   parameter-store:  
     DOCKER_USERNAME: /myapp/docker-credentials/username
