@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    DOCKER_IMAGE: "chauhanshreyash18/aws-ultimate-cicd:1"  #this file includes normal tag , it doesnot include build number for ecach buil#
+    DOCKER_IMAGE: "chauhanshreyash18/aws-ultimate-cicd:1"  #this file includes normal tag , it doesnot include build number for ecach build#
     DOCKERFILE_LOCATION: "./Dockerfile"
   parameter-store:  
     DOCKER_USERNAME: /myapp/docker-credentials/username
