@@ -25,7 +25,8 @@ phases:
       - echo "Building the Docker image"
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t "$DOCKER_IMAGE" .
-      - docker push "$DOCKER_URL/$DOCKER_IMAGE"
+      - docker tag "$DOCKER_IMAGE" index.docker.io/"$DOCKER_IMAGE
+      - docker push index.docker.io/"$DOCKER_IMAGE"
   post_build:
     commands:
       - echo "build is successfull"
