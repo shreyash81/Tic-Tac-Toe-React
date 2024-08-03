@@ -1,27 +1,34 @@
-# Use the official Nginx image from the Docker Hub
+# Stage 1: Build the application
+FROM node:18 AS build
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy the application code
+COPY . .
+
+# Build the application
+RUN npm run build
+
+# Stage 2: Serve the application with Nginx
 FROM nginx:1.27.0
 
-# Set the working directory inside the container
-WORKDIR /usr/share/nginx/html
+# Copy the build output to the Nginx serving directory
+COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 
-# Copy the contents of the local 'dist' directory to the Nginx serving directory inside the container
-COPY ./dist/ .
-
-# Create /var/www/html directory inside the container
-RUN mkdir -p /var/www/html
-
-# Copy the index.html file to /var/www/html
-RUN cp /usr/share/nginx/html/index.html /var/www/html/
-
-# Copy the custom Nginx configuration file to the container
+# Optionally, copy a custom Nginx configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
 
-
-# Expose port 80 (Nginx listens on port 80 by default)
+# Expose port 80
 EXPOSE 80
 
-# Start Nginx when the container launches
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
+
 
 
 
