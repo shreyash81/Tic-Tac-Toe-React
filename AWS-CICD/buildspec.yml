@@ -23,12 +23,15 @@ phases:
     commands:
       - echo "Building the project..."
       - npm run build
+      
       - echo "Building the Docker image..."
       - docker build -t "${DOCKER_USERNAME}/aws-ultimate-cicd:${CODEBUILD_BUILD_NUMBER}" -f "./Dockerfile" .
+      
       - echo "Logging in to Docker registry..."
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      
       - echo "Pushing Docker image..."
-      - docker push "index.dokcer.io/${DOCKER_USERNAME}/aws-ultimate-cicd:${CODEBUILD_BUILD_NUMBER}"
+      - docker push "index.docker.io/${DOCKER_USERNAME}/aws-ultimate-cicd:${CODEBUILD_BUILD_NUMBER}"
 
   post_build:
     commands:
