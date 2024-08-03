@@ -20,7 +20,6 @@ phases:
   build:
     commands:
       - echo "Building the peoject"
-      - cd AWS-CICD
       - npm run build
       - echo "Building the Docker image"
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
