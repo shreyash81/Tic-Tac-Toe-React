@@ -1,0 +1,45 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.quote_container {
+  position: fixed;
+  top: 58vh;
+  left: 10vw;
+  margin-bottom: var(--margin-medium-large);
+  margin-right: var(--margin-large);
+}
+.game_container {
+  height: 46rem;
+  width: 26rem;
+  background: var(--color-accent);
+  outline: none;
+  border-radius: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 428px) {
+  .home {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+  }
+  .game_container {
+    /* margin-top: var(--margin-small); */
+    height: 100%;
+    width: 95%;
+    margin-bottom: var(--margin-small-s);
+  }
+  .quote_container {
+    position: unset;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
