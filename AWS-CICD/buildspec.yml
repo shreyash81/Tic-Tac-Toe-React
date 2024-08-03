@@ -6,9 +6,9 @@ env:
     DOCKER_IMAGE: "chauahanshreyash18/AWS-ultimate-CICD:latest"
     DOCKERFILE_LOCATION: "AWS-CICD/Dockerfile"
   parameter-store:  
-    DOCKER_USERNAME: myapp/DOCKER_CREDENTIALS/USERNAME
-    DOCKER_PASSWORD:  myapp/DOCKER_CREDENTIALS/PASSWORD
-    DOCKER_URL: myapp/DOCKER_REGISTRY/URL
+    DOCKER_USERNAME: /myapp/docker-credentials/username
+    DOCKER_PASSWORD: /myapp/docker-credentials/password
+    DOCKER_URL: /myapp/docker-registry/url
 phases:
   install:
     runtime-version:
