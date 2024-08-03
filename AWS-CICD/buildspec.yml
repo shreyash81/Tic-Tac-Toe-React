@@ -3,8 +3,7 @@ version: 0.2
 
 env:
   variables:
-    BUILD_NUMBER: "BUILD_NUMBER"
-    DOCKER_IMAGE: "chauhanshreyash18/aws-ultimate-cicd:${BUILD_NUMBER}"
+    DOCKER_IMAGE: "chauhanshreyash18/aws-ultimate-cicd:${CODEBUILD_BUILD_NUMBER}"
     DOCKERFILE_LOCATION: "./Dockerfile"
   parameter-store:  
     DOCKER_USERNAME: /myapp/docker-credentials/username
