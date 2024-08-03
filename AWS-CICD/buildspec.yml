@@ -1,10 +1,7 @@
 version: 0.2
 
 env:
-  variables:
-    DOCKER_IMAGE: "chauhanshreyash18/aws-ultimate-cicd:1"
-    DOCKERFILE_LOCATION: "./Dockerfile"
-  parameter-store:  
+  parameter-store:
     DOCKER_USERNAME: /myapp/docker-credentials/username
     DOCKER_PASSWORD: /myapp/docker-credentials/password
 
@@ -19,18 +16,19 @@ phases:
     commands:
       - cd AWS-CICD/
       - npm install
-      - echo "DOCKER_IMAGE=${DOCKER_IMAGE}"
-     # - echo "CODEBUILD_BUILD_NUMBER=${CODEBUILD_BUILD_NUMBER}"
+      - echo "DOCKER_USERNAME=${DOCKER_USERNAME}"
+      - echo "CODEBUILD_BUILD_NUMBER=${CODEBUILD_BUILD_NUMBER}"
 
   build:
     commands:
       - echo "Building the project..."
       - npm run build
       - echo "Building the Docker image..."
-      - docker build -t "${DOCKER_IMAGE}" .
-      - docker tag "${DOCKER_IMAGE}" "index.docker.io/${DOCKER_IMAGE}"
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin 
-      - docker push "index.docker.io/${DOCKER_IMAGE}"
+      - docker build -t "${DOCKER_USERNAME}/aws-ultimate-cicd:${CODEBUILD_BUILD_NUMBER}" -f "./Dockerfile" .
+      - echo "Logging in to Docker registry..."
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - echo "Pushing Docker image..."
+      - docker push "index.dokcer.io/${DOCKER_USERNAME}/aws-ultimate-cicd:${CODEBUILD_BUILD_NUMBER}"
 
   post_build:
     commands:
